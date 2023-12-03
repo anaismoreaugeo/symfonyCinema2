@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="form">
+        {{ form_start(questionForm) }}
+
+        {{ form_row(questionForm.textQuestion) }}
+
+        <ul class="tags"
+            data-index="{{ questionForm.responseQuizzs|length > 0 ? questionForm.responseQuizzs|last.vars.name + 1 : 0 }}"
+            data-prototype="{{ form_widget(questionForm.responseQuizzs.vars.prototype)|e('html_attr') }}"
+        ></ul>
+        <button type="button" class="add_item_link" data-collection-holder-class="tags">Ajouter une nouvelle personne à la fonction</button>
+
+        {% if 'edit' in app.request.uri %}
+            {{ form_widget(questionForm.save, { 'label': 'Edit' }) }}
+        {% endif %}
+        {{ form_end(questionForm) }}
+    </div>
+
+
+    <script>
+        const addFormToCollection = (e) => {
+            console.log('???')
+            const collectionHolder = document.querySelector('.' + e.currentTarget.dataset.collectionHolderClass);
+
+            const item = document.createElement('li');
+
+            item.innerHTML = collectionHolder
+                .dataset
+                .prototype
+                .replace(
+                    /__name__/g,
+                    collectionHolder.dataset.index
+                );
+
+            collectionHolder.appendChild(item);
+
+            collectionHolder.dataset.index++;
+        };
+        document
+            .querySelectorAll('.add_item_link')
+            .forEach(btn => {
+                btn.addEventListener("click", addFormToCollection)
+            });
+    </script>
+{% endblock %}

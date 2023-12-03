@@ -1,0 +1,130 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    font-size: 20px;
+    font-family: sans-serif;
+    background-color: #FF2049;
+    border-color: white;
+}
+
+
+.btn-export {
+    background : gray;
+    color:white;
+    margin: 10px;
+}
+iframe {
+    position:absolute;
+}
+input {
+    height:20px;
+    margin : 10px;
+}
+
+button {
+    height: 30px;
+    color: white;
+    margin: 20px;
+    background: black;
+    font-size: 15px;
+    border :none;
+    cursor:pointer;
+}
+
+.iframeFooter {
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+    height: 60px;
+    background :#FF2049;
+}
+.exportListeCsv {
+    text-align: center;
+}
+.exportListeCsv a {
+    background: black;
+    color: white;
+    text-decoration: none;
+    padding: 15px;
+}
+label {
+    background: darkgrey;
+    color:white;
+}
+.formParticipate {
+    display: block;
+    place-content: center;
+    top: 20%;
+    position: relative;
+}
+.form {
+    display: flex;
+    place-content: center;
+    padding-top : 10%;
+    padding-bottom: 20px;
+    position: relative;
+
+}
+.formPArticipate-sub {
+    padding: 25px;
+    height: 50vh;
+    overflow: auto;
+    margin-top: 50px;
+    border : 1px solid white;
+}
+
+.login {
+    text-align: center;
+}
+
+a:hover {
+    color:yellow;
+    color:lightpink;
+}
+
+.doingOrCreate {
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+.doingOrCreate-sub {
+    width: 50%;
+    display: flex;
+    place-items: center;
+    justify-content: center;
+    font-size: 45px;
+}
+
+.doingOrCreate-sub:hover {
+    cursor:pointer;
+    background: #c9a51a;
+    color : white;
+}
+a.doingOrCreate-sub{
+    color: black;
+    text-decoration: none;
+
+}
+
+.header {
+    display: block;
+    top: 0;
+    z-index: 9;
+    position: fixed;
+    background: black;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+}
+.header a {
+    padding : 5px;
+    color:grey;
+    text-decoration: none;
+}
+.header a:hover {
+    color: yellow;
+}

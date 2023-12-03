@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="formParticipate">
+        <div class="exportListeCsv">
+            <a href="{{ path('app_quizz_export') }}">Exporter les fiches des films disponibles en csv</a>
+        </div>
+        <div class="form">
+            <p>
+            <div class="formPArticipate-sub">
+                <p>
+                    Films à visionner
+                </p>
+                {{ otherQuizzs|length }}
+                <ul>
+                    {% for quizz in otherQuizzs %}
+                        <li><a href="/quizz/{{ quizz.id }}">{{ quizz.title }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="formPArticipate-sub">
+                <p>
+                    Films déjà visionnés
+                </p>
+                {{ userQuizzs|length }}
+                <ul>
+                    {% for quizz in userQuizzs %}
+                        <li><a href="/quizz/{{ quizz.id }}">{{ quizz.title }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="formPArticipate-sub">
+                <p>
+                    Films ajoutés
+                </p>
+                {{ authoredQuizzs|length }}
+                <ul>
+                    {% for quizz in authoredQuizzs %}
+                        <li><a href="/quizz/{{ quizz.id }}">{{ quizz.title }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            </p>
+        </div>
+    </div>
+
+
+{% endblock %}

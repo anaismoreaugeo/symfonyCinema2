@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="form">
+        <div>
+            {{ currentQuestion.orderQuestion }}
+            {{ currentQuestion.textQuestion }}
+            <div>
+                {% for answer in currentQuestion.responseQuizzs %}
+                    <div>
+                        <a href="{{ path('app_quizz_question_answer', {quizzId: quizz.id, questionId: currentQuestion.id, answerId:answer.id})}}">
+                            {{ answer.textResponseQuizz }}
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

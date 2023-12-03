@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="form">
+        <div>
+            <h1>{{ quizz.title }}</h1>
+
+            {% if quizz.videoPath is defined and quizz.videoPath is not empty %}
+                <iframe width="560" height="315" style="position:relative"src="{{ quizz.videoPath }}" frameborder="0" allowfullscreen></iframe>
+            {% else %}
+                <p>No video available for this quizz.</p>
+            {% endif %}
+            <br>
+            <h2>Fiche Générique</h2>
+            {% if quizz.author == app.user %}
+                <a href="/quizz/{{ quizz.id }}/question">AJouter une autre fonction (réalisateur, acteur, etc)</a>
+            {% endif %}
+            <p>
+                {% for question in quizz.questions|sort((a, b) => a.orderQuestion <=> b.orderQuestion) %}
+            <p>{{ question.textQuestion }}</p>
+            <ul>
+                {% for answer in question.responseQuizzs|sort((a, b) => b.id <=> a.id) %}
+                    <li>{{ answer.textResponseQuizz }}</li>
+                {% endfor %}
+            </ul>
+            {% if quizz.author == app.user %}
+                <p><a href="{{ path('app_question_edit', {quizzId: quizz.id, questionId: question.id}) }}">⬆Modifier la fonction</a></p>
+            {% endif %}
+            {% endfor %}
+            </p>
+
+        </div>
+
+    </div>
+
+
+{% endblock %}
